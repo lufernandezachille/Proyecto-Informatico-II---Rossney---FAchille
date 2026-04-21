@@ -1,0 +1,246 @@
+/*general*/
+html{
+    scroll-behavior: smooth;
+}
+
+:root {
+    --fondo: rgb(255, 248, 231);
+    --color-primario: rgb(34, 15, 6);
+    --color-primario-letra: rgb(27, 18, 12);
+    --color-secundario-letra: rgb(255, 248, 231);
+    --color-3: rgb(110, 69, 36);
+    --color-primario-sombra: rgb(20, 8, 2);
+    --color-4: rgb(164, 82, 14);
+    --color-5: rgb(255, 252, 244);
+}
+
+body {
+    background-color: var(--fondo);
+    color: var(--color-primario-letra);
+    font-family: "DM Serif Display", serif;
+    margin: 0;
+    padding: 0;
+    
+}
+
+/*nav*/
+header {
+    background-color: var(--color-primario);
+    padding: 20px;
+}      
+
+.logo {
+    color: var(--color-secundario-letra);
+    font-weight: 400;
+    font-size: 3em;
+}     
+
+.link {
+    margin: 0;
+    font-weight: 400;
+    font-size: 1.5em;
+    color: var(--color-secundario-letra);
+}
+
+.link:hover {
+    color: var(--color-4);
+}
+
+/*iniciar sesión y crear cuenta*/
+.form {
+    margin: 70px 20px;
+    background-color: var(--color-3);
+    padding: 50px;
+    border-radius: 30px;
+    align-items: center;
+}
+
+.tituloform {
+    color: var(--color-secundario-letra);
+    font-weight: 400;
+    font-size: 2.5em;
+    margin-bottom: 30px;
+}
+
+.itemform {
+    background-color: var(--color-secundario-letra);
+    padding: 15px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+}
+
+.enviar {
+    background-color: var(--color-primario);
+    color: var(--color-secundario-letra);
+    font-size: 1.2em;
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin: 20px auto;
+    display: block;
+}
+
+.enviar:hover {
+    background-color: var(--color-primario-sombra);
+}
+
+.cuenta {
+    color: var(--color-secundario-letra);
+    font-size: 1.2em;
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/*mi closet*/
+.miclosettitulo {
+    color: var(--color-primario-letra);
+    font-size: 2.5em;
+    margin: 20px;
+}
+
+.prenda{
+    background-color: var(--color-5);
+    box-shadow: 1px 1px 10px 1px var(--color-3);
+    padding: 20px;
+    border-radius: 30px;
+    margin: 20px;
+    display: inline-block;
+    width: 300px;
+    height: 300px;
+}
+
+.prenda img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+}
+
+.outfit{
+    background-color: var(--color-5);
+    box-shadow: 1px 1px 10px 1px var(--color-3);
+    padding: 20px;
+    border-radius: 30px;
+    margin: 20px;
+    display: inline-block;
+    width: 300px;
+    height: 500px;
+}
+
+.outfit img {
+    width: 250px;
+    height: 450px;
+    object-fit: cover;
+}
+
+/*explorar*/
+.navexplorar {
+    background-color: var(--color-3);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.tituloexplorar {
+    color: var(--color-primario-letra);
+    font-size: 2.5em;
+    margin: 20px;
+}
+
+.prendaexplorar img {
+    width: 250px;
+    height: 250px;
+}
+
+.prendaexplorar {
+    background-color: var(--color-5);
+    box-shadow: 1px 1px 10px 1px var(--color-3);
+    padding: 20px;
+    border-radius: 30px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 320px;
+    height: 320px;
+}
+
+.tituloprenda {
+    color: var(--color-primario-letra);
+    font-size: 1.5em;
+    align-self: flex-start;
+}
+
+.botonagregar {
+    background-color: var(--color-4);
+    color: var(--color-primario-letra);
+    font-size: 1.2em;
+    font-weight: 1000;
+    border-radius: 50px;
+    padding: 10px 20px;
+    position: absolute;
+    right: 25px;
+    bottom:35px;
+}
+
+.prendaexplorar {
+    position: relative;
+}
+
+.botonagregar:hover {
+    background-color: var(--color-3);
+}
+
+#remerascontenedor {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+#pantalonescontenedor {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+#vestidoscontenedor {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+#calzadocontenedor {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+#accesorioscontenedor {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+
+/*footer*/
+footer {
+    background-color: var(--color-primario);
+    color: var(--color-secundario-letra);
+    text-align: center;
+    padding: 40px;;
+    width: 100%;
+}
