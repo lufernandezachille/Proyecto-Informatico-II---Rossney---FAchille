@@ -3,13 +3,6 @@ html{
     scroll-behavior: smooth;
 }
 
-:root {
-    --cremita: #FFF9F4;
-    --marron-oscuro: #160E00;
-    --marron-claro: #8C7865;
-    --marron-claro-hover: #A38F7D;
-}
-
 body {
     background-color: var(--cremita);
     color: var(--marron-oscuro);
@@ -20,6 +13,14 @@ body {
 
 main {
     margin-bottom: 100px;
+}
+
+/*colores*/
+:root {
+    --cremita: #FFF9F4;
+    --marron-oscuro: #160E00;
+    --marron-claro: #8C7865;
+    --marron-claro-hover: #A38F7D;
 }
 
 /* transiciones */
@@ -33,6 +34,7 @@ main {
     transition: 0.3s;
 }
 
+/*header*/
 header h1 {
     color: var(--marron-oscuro);
     text-align: center;
@@ -41,7 +43,7 @@ header h1 {
     padding: 10px;
 }
 
-/* iniciar sesion */
+/* iniciar sesion y crear cuenta*/
 .formulario {
     background-color: var(--marron-oscuro);
     color: var(--cremita);
@@ -267,4 +269,37 @@ nav {
     margin-left: 15px;
     object-fit: cover;
     border-radius: 10px;
+}
+
+/* crear outfit */
+.contenedor-opciones-outfit {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: left;
+    margin: 0 30px;
+}
+
+.tipo-outfit {
+    background-color: var(--marron-claro);
+    border-radius: 15px;
+    padding: 10px;
+    width: 180px;
+    height: 400px;
+    text-decoration: none;
+}
+
+.img-tipo-outfit {
+    width: 150px;
+    height: 360px;
+    margin-left: 15px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.titulo-tipo-outfit {
+    text-align: center;
+    font-size: 0.9em;
+    margin: 5px 0;
+    display: inline-block;
 }
