@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,65 +11,56 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-            <a class="navbar-brand logo" href="../index.html">ABC</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                <a class="nav-link link" href="micloset.html">Mi Closet</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link link" href="explorar.html">Explorar</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link link" href="armaroutfit.html">Armar Outfit</a>
-                </li>
-                <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Cuenta
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="iniciarsesion.html">Iniciar Sesión</a></li>
-                    <li><a class="dropdown-item" href="crearcuenta.html">Registrarse</a></li>
-                    <li><a class="dropdown-item" href="#">Cerrar Sesión</a></li>
-                </ul>
-                </li>
-                </li>
-            </ul>
-            </div>
-        </div>
-        </nav>
+        <h1>MOK</h1>
     </header>
     
-    <main class="container">
-        <div class="row justify-content-center" >
-        <div class="col-sm-11 col-md-6 col-lg-4 form">
-        <form action="#" method="get" class="form-container">
-            <h1 class="text-center tituloform">Crear Cuenta</h1>
-            <input class="form-control itemform" type="text" name="nombre" id="nombre" placeholder="Nombre">
-            <br>
-            <input class="form-control itemform" type="text" name="apellido" id="apellido" placeholder="Apellido">
-            <br>
-            <input class="form-control itemform" type="email" name="mail" id="mail" placeholder="Correo electrónico">
-            <br>
-            <input class="form-control itemform" type="password" name="password" id="password" placeholder="Contraseña">
-            <br>
-            <input class="form-control itemform" type="password" name="confpassword" id="confpassword" placeholder="Confirmar contraseña">
-            <br>
-            <input class="btn enviar" type="submit" value="Registrarse">
-            <a href="iniciarsesion.html" class="button cuenta">Ya tengo una cuenta</a>
+    <main>
+        <form action="#" method="get" class="formulario">
+            <h1 class="tituloform">Crear Cuenta</h1>
+            
+            <input class="itemform" type="text" name="nombre" id="nombre" placeholder="Nombre">
+            
+            <input class="itemform" type="text" name="apellido" id="apellido" placeholder="Apellido">
+
+            <input class="itemform" type="email" name="mail" id="mail" placeholder="Correo electrónico">
+
+            <input class="itemform" type="password" name="password" id="password" placeholder="Contraseña">
+
+            <input class="itemform" type="password" name="confpassword" id="confpassword" placeholder="Confirmar contraseña">
+
+            <input class="enviar" type="submit" value="Registrarse">
+            <a href="iniciarsesion.html" class="cuenta">Ya tengo una cuenta</a>
         </form>
-        </div>
-        </div>
     </main>
     
     <footer>
-        <p>&copy; 2026 ABC. Todos los derechos reservados.</p>
+        <nav>
+            <div class="seccion">
+                <a href="../index.html" class="icono">
+                    <img src="../img/inicio.png" alt="Inicio">
+                </a>
+            </div>
+
+            <div class="seccion">
+                <a href="explorar.html" class="icono">
+                    <img src="../img/explorar.png" alt="Explorar">
+                </a>
+            </div>
+
+            <a href="crearoutfit.html" class="crear-outfit">+</a>
+
+            <div class="seccion">
+                <a href="armario.html" class="icono">
+                    <img src="../img/armario.png" alt="Armario">
+                </a>
+            </div>
+
+            <div class="seccion sin-linea">
+                <a href="#" class="icono">
+                    <img src="../img/cuenta.png" alt="Cuenta">
+                </a>
+            </div>
+        </nav>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
