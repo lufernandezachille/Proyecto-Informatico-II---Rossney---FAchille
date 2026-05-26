@@ -30,7 +30,8 @@ main {
 .icono,
 .crear-outfit, 
 .nav-explorar-item,
-.boton-agregar {
+.boton-agregar, 
+.boton-generar-outfit {
     transition: 0.3s;
 }
 
@@ -272,11 +273,16 @@ nav {
 }
 
 /* crear outfit */
+.titulo-crearoutfit {
+    text-align: left;
+    margin: 30px 10px;
+}
+
 .contenedor-opciones-outfit {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    justify-content: left;
+    justify-content: center;
     margin: 0 30px;
 }
 
@@ -286,7 +292,6 @@ nav {
     padding: 10px;
     width: 180px;
     height: 400px;
-    text-decoration: none;
 }
 
 .img-tipo-outfit {
@@ -301,5 +306,30 @@ nav {
     text-align: center;
     font-size: 0.9em;
     margin: 5px 0;
-    display: inline-block;
+    display: block;
+    text-decoration: none;
+    color: var(--marron-oscuro);
+}
+
+.titulo-outfit {
+    text-align: center;
+    margin: 0 10px;
+}
+
+.boton-generar-outfit {
+    background-color: var(--marron-oscuro);
+    color: var(--cremita);
+    font-family: "DM Serif Display", serif;
+    border: none;
+    padding: 20px 45px;
+    border-radius: 10px;
+    font-size: 1.5em;
+    display: block;
+    margin: 20px auto;
+}
+
+.boton-generar-outfit:hover {
+    background-color: var(--marron-claro);
+    cursor: pointer;
+    transform: scale(1.05);
 }
