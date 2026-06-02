@@ -280,26 +280,26 @@ nav {
 
 .contenedor-opciones-outfit {
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    margin: 0 30px;
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
 }
 
 .tipo-outfit {
     background-color: var(--marron-claro);
-    border-radius: 15px;
+    border-radius: 10px;
+    width: 250px;
     padding: 10px;
-    width: 180px;
-    height: 400px;
+    text-decoration: none;
+    color: var(--marron-oscuro);
 }
 
 .img-tipo-outfit {
-    width: 150px;
+    width: 180px;
     height: 360px;
-    margin-left: 15px;
     object-fit: cover;
     border-radius: 10px;
+    margin-left: 35px;
 }
 
 .titulo-tipo-outfit {
@@ -322,7 +322,7 @@ nav {
     font-family: "DM Serif Display", serif;
     border: none;
     padding: 20px 45px;
-    border-radius: 10px;
+    border-radius: 15px;
     font-size: 1.5em;
     display: block;
     margin: 20px auto;
@@ -332,4 +332,180 @@ nav {
     background-color: var(--marron-claro);
     cursor: pointer;
     transform: scale(1.05);
+}
+
+.outfit-generado {
+    width: 250px;
+    border-radius: 10px;
+    margin: 0 auto;
+    background-color: var(--marron-claro);
+    padding: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.prenda {
+    background-color: var(--cremita);
+    width: 180px;
+    border-radius: 5px;
+    object-fit: contain;
+    padding: 5px;
+}
+
+.favorito {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 28px;
+    height: 28px;
+    border: none;
+    border-radius: 50px;
+    background-color: var(--cremita);
+    color: var(--marron-oscuro);
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* cuenta */
+.titulo-cuenta {
+    text-align: center;
+    margin: 0;
+}
+
+.contenedor-cuenta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 85%;
+    max-width: 350px;
+    margin: 40px auto;
+}
+
+.icono-cuenta {
+    width: 90px;
+    height: 90px;
+    background-color: var(--marron-claro);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.icono-cuenta img {
+    width: 45px;
+}
+
+.titulo-cuenta {
+    margin-bottom: 10px;
+}
+
+.descripcion-cuenta {
+    text-align: center;
+    line-height: 1.5;
+    margin-bottom: 30px;
+}
+
+.boton-principal {
+    background-color: var(--marron-oscuro);
+    color: var(--cremita);
+    text-decoration: none;
+    padding: 15px 40px;
+    border-radius: 12px;
+    font-family: "DM Serif Display", serif;
+    font-size: 1.1em;
+    transition: 0.2s;
+}
+
+.boton-principal:hover {
+    transform: scale(1.05);
+}
+
+.separador {
+    width: 100%;
+    text-align: center;
+    margin: 25px 0;
+    position: relative;
+}
+
+.separador::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 42%;
+    height: 1px;
+    background-color: var(--marron-claro);
+}
+
+.separador::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 42%;
+    height: 1px;
+    background-color: var(--marron-claro);
+}
+
+.separador span {
+    padding: 0 10px;
+}
+
+.texto-crear {
+    margin-bottom: 10px;
+}
+
+.link-crear {
+    color: var(--marron-oscuro);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* inicio */
+.home {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 0 15px;
+}
+
+.opcion-home {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--marron-oscuro);
+}
+
+.opcion-home h2 {
+    flex: 1;
+    font-size: 1.2rem;
+    font-weight: normal;
+    line-height: 1.15;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.opcion-home img {
+    width: 68%;
+    max-width: 260px;
+    border-radius: 8px;
+    object-fit: cover;
+    transition: transform 0.2s;
+}
+
+.opcion-home:hover img {
+    transform: scale(1.02);
+}
+
+.opcion-home-invertida {
+    justify-content: space-between;
+}
+
+.opcion-home-invertida h2 {
+    text-align: right;
 }
