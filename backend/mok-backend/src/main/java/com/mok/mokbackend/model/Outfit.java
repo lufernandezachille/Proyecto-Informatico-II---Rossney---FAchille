@@ -1,32 +1,47 @@
 package com.mok.mokbackend.model;
 
+
+import jakarta.persistence.*;
 import java.util.List;
 
+
+@Entity
+@Table(name="outfits")
 public class Outfit {
 
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
-    private Long usuarioId;
-    private String tipo;
-    private List<PrendaUsuario> prendas;
 
-    public Outfit() {}
+    @ManyToOne
+    @JoinColumn(name="usuario_id")
+    private Usuario usuario;
 
-    public Outfit(Long id, Long usuarioId, String tipo, List<PrendaUsuario> prendas) {
-        this.id = id;
-        this.usuarioId = usuarioId;
+    @Enumerated(EnumType.STRING)
+    private TipoOutfit tipo;
+
+    @ManyToMany
+    @JoinTable(
+            name="outfit_prenda",
+            joinColumns=@JoinColumn(name="outfit_id"),
+            inverseJoinColumns=@JoinColumn(name="usuario_prenda_id")
+    )
+    private List<UsuarioPrenda> prendas;
+
+    public Outfit(){}
+
+    public Outfit(Usuario usuario, TipoOutfit tipo, List<UsuarioPrenda> prendas){
+        this.usuario = usuario;
         this.tipo = tipo;
         this.prendas = prendas;
     }
 
     public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public Usuario getUsuario() { return usuario; }
+    public TipoOutfit getTipo() { return tipo; }
+    public List<UsuarioPrenda> getPrendas() { return prendas; }
 
-    public Long getUsuarioId() { return usuarioId; }
-    public void setUsuarioId(Long usuarioId) { this.usuarioId = usuarioId; }
-
-    public String getTipo() { return tipo; }
-    public void setTipo(String tipo) { this.tipo = tipo; }
-
-    public List<PrendaUsuario> getPrendas() { return prendas; }
-    public void setPrendas(List<PrendaUsuario> prendas) { this.prendas = prendas; }
+    public void setUsuario(Usuario usuario) { this.usuario = usuario; }
+    public void setTipo(TipoOutfit tipo) { this.tipo = tipo; }
+    public void setPrendas(List<UsuarioPrenda> prendas) { this.prendas = prendas; }
 }

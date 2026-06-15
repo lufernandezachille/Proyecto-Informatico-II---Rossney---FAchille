@@ -1,33 +1,40 @@
 package com.mok.mokbackend.service;
 
+
 import com.mok.mokbackend.model.Usuario;
+import com.mok.mokbackend.repository.UsuarioRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class UsuarioService {
+    
+    private final UsuarioRepository usuarioRepository;
 
-    private final List<Usuario> usuarios = new ArrayList<>();
+    public UsuarioService(UsuarioRepository usuarioRepository){
+        this.usuarioRepository = usuarioRepository;
+    }
 
-    public Usuario crear(Usuario usuario) {
-        usuario.setId((long) (usuarios.size() + 1));
-        usuarios.add(usuario);
+    public Usuario registrarUsuario(Usuario usuario){
+
+        if(usuarioRepository.findByEmail(usuario.getEmail()).isPresent()){
+            throw new RuntimeException("El email ya existe");
+        }
+
+        return usuarioRepository.save(usuario);
+    }
+
+    public Usuario login(String email, String password){
+
+        Usuario usuario = usuarioRepository.findByEmail(email)
+                .orElseThrow(() ->
+                        new RuntimeException("Usuario no encontrado")
+                );
+
+        if(!usuario.getPassword().equals(password)){
+            throw new RuntimeException("Contraseña incorrecta");
+        }
+
         return usuario;
-    }
-
-    public Usuario buscarPorEmail(String email) {
-        return usuarios.stream()
-                .filter(u -> u.getEmail().equals(email))
-                .findFirst()
-                .orElse(null);
-    }
-
-    public Usuario buscarPorId(Long id) {
-        return usuarios.stream()
-                .filter(u -> u.getId().equals(id))
-                .findFirst()
-                .orElse(null);
     }
 }

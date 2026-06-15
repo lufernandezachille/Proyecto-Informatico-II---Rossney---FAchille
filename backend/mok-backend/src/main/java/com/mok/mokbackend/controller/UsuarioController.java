@@ -4,41 +4,29 @@ import com.mok.mokbackend.model.Usuario;
 import com.mok.mokbackend.service.UsuarioService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/usuarios")
+@CrossOrigin(origins = "*")
 public class UsuarioController {
 
-    private final UsuarioService service;
+    private final UsuarioService usuarioService;
 
-    public UsuarioController(UsuarioService service) {
-        this.service = service;
+    public UsuarioController(UsuarioService usuarioService){
+        this.usuarioService = usuarioService;
     }
 
-    @GetMapping
-    public List<Usuario> obtenerTodos() {
-        return service.obtenerTodos();
-    }
+    @PostMapping("/registro")
+    public Usuario registrar(@RequestBody Usuario usuario){
 
-    @PostMapping
-    public Usuario crear(@RequestBody Usuario usuario) {
-        return service.crear(usuario);
+        return usuarioService.registrarUsuario(usuario);
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody Usuario usuario) {
+    public Usuario login(@RequestBody Usuario usuario){
 
-        Usuario encontrado = service.buscarPorEmail(usuario.getEmail());
-
-        if (encontrado == null) {
-            return "Usuario no encontrado";
-        }
-
-        if (!encontrado.getPassword().equals(usuario.getPassword())) {
-            return "Password incorrecta";
-        }
-
-        return "Login exitoso";
+        return usuarioService.login(
+                usuario.getEmail(),
+                usuario.getPassword()
+        );
     }
 }

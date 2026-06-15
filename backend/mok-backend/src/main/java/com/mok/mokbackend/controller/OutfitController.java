@@ -1,29 +1,22 @@
 package com.mok.mokbackend.controller;
 
-import com.mok.mokbackend.model.Outfit;
-import com.mok.mokbackend.service.OutfitService;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import com.mok.mokbackend.service.OutfitService;
+import com.mok.mokbackend.model.Outfit;
 
 @RestController
 @RequestMapping("/outfits")
+@CrossOrigin(origins="*")
 public class OutfitController {
 
-    private final OutfitService service;
+    private final OutfitService outfitService;
 
-    public OutfitController(OutfitService service) {
-        this.service = service;
+    public OutfitController(OutfitService outfitService){
+        this.outfitService = outfitService;
     }
 
-    @PostMapping("/generar")
-    public Outfit generar(@RequestParam Long usuarioId,
-                          @RequestParam String tipo) {
-        return service.generarOutfit(usuarioId, tipo);
-    }
-
-    @GetMapping("/usuario/{id}")
-    public List<Outfit> obtener(@PathVariable Long id) {
-        return service.obtenerPorUsuario(id);
+    @PostMapping("/generar/{usuarioId}")
+    public Outfit generar(@PathVariable Long usuarioId){
+        return outfitService.generarOutfitBasico(usuarioId);
     }
 }

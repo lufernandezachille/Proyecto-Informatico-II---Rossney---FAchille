@@ -1,30 +1,41 @@
 package com.mok.mokbackend.service;
 
 import com.mok.mokbackend.model.Prenda;
+import com.mok.mokbackend.repository.PrendaRepository;
 import org.springframework.stereotype.Service;
+import com.mok.mokbackend.model.TipoPrenda;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class PrendaService {
+    private final PrendaRepository prendaRepository;
 
-    private final List<Prenda> prendas = new ArrayList<>();
-
-    public List<Prenda> obtenerTodas() {
-        return prendas;
+    public PrendaService(PrendaRepository prendaRepository){
+        this.prendaRepository = prendaRepository;
     }
 
-    public Prenda agregar(Prenda prenda) {
-        prenda.setId((long) (prendas.size() + 1));
-        prendas.add(prenda);
-        return prenda;
+    // Traer todas las prendas para explorar
+    public List<Prenda> obtenerTodas(){
+
+        return prendaRepository.findAll();
     }
 
-    public Prenda buscarPorId(Long id) {
-        return prendas.stream()
-                .filter(p -> p.getId().equals(id))
-                .findFirst()
-                .orElse(null);
+    // Crear una prenda general
+    public Prenda crearPrenda(Prenda prenda){
+
+        return prendaRepository.save(prenda);
+    }
+
+    public Prenda buscarPorId(Long id){
+
+        return prendaRepository.findById(id)
+                .orElseThrow(() ->
+                        new RuntimeException("Prenda no encontrada")
+                );
+    }
+
+    public List<Prenda> obtenerPorTipo(TipoPrenda tipo){
+        return prendaRepository.findByTipo(tipo);
     }
 }

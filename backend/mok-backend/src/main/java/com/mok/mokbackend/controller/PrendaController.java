@@ -1,28 +1,39 @@
 package com.mok.mokbackend.controller;
 
 import com.mok.mokbackend.model.Prenda;
+import com.mok.mokbackend.model.TipoPrenda;
 import com.mok.mokbackend.service.PrendaService;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
 @RequestMapping("/prendas")
+@CrossOrigin(origins="*")
 public class PrendaController {
 
-    private final PrendaService service;
+    private final PrendaService prendaService;
 
-    public PrendaController(PrendaService service) {
-        this.service = service;
+    public PrendaController(PrendaService prendaService){
+        this.prendaService=prendaService;
     }
 
     @GetMapping
-    public List<Prenda> obtenerTodas() {
-        return service.obtenerTodas();
+    public List<Prenda> obtener(){
+        return prendaService.obtenerTodas();
     }
 
     @PostMapping
-    public Prenda agregar(@RequestBody Prenda prenda) {
-        return service.agregar(prenda);
+    public Prenda crear(@RequestBody Prenda prenda){
+        return prendaService.crearPrenda(prenda);
+    }
+
+    @GetMapping("/tipo/{tipo}")
+    public List<Prenda> porTipo(
+            @PathVariable TipoPrenda tipo
+    ){
+        return prendaService.obtenerPorTipo(tipo);
     }
 }
