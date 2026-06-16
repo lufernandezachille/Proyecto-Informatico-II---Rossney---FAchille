@@ -19,43 +19,50 @@ public class DataInitializer implements CommandLineRunner {
             prendaRepository.save(
                     new Prenda(
                             "Remera blanca",
-                            TipoPrenda.ARRIBA
+                            TipoPrenda.ARRIBA,
+                            CategoriaPrenda.REMERA
                     )
             );
             prendaRepository.save(
                     new Prenda(
                             "Camisa negra",
-                            TipoPrenda.ARRIBA
+                            TipoPrenda.ARRIBA,
+                            CategoriaPrenda.REMERA
                     )
             );
             prendaRepository.save(
                     new Prenda(
                             "Jean azul",
-                            TipoPrenda.ABAJO
+                            TipoPrenda.ABAJO,
+                            CategoriaPrenda.PANTALON
                     )
             );
             prendaRepository.save(
                     new Prenda(
                             "Pantalón negro",
-                            TipoPrenda.ABAJO
+                            TipoPrenda.ABAJO,
+                            CategoriaPrenda.PANTALON
                     )
             );
             prendaRepository.save(
                     new Prenda(
                             "Zapatillas blancas",
-                            TipoPrenda.CALZADO
+                            TipoPrenda.CALZADO,
+                            CategoriaPrenda.CALZADO
                     )
             );
             prendaRepository.save(
                     new Prenda(
                             "Gorra",
-                            TipoPrenda.ACCESORIO
+                            TipoPrenda.ACCESORIO,
+                            CategoriaPrenda.ACCESORIO
                     )
             );
             prendaRepository.save(
                     new Prenda(
                             "Vestido negro",
-                            TipoPrenda.VESTIDO
+                            TipoPrenda.VESTIDO,
+                            CategoriaPrenda.VESTIDO
                     )
             );
         }

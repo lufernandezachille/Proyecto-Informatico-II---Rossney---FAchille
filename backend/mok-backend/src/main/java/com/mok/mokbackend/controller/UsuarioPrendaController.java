@@ -40,4 +40,12 @@ public class UsuarioPrendaController {
     public List<Prenda> prendasDelUsuario(@PathVariable Long usuarioId){
         return service.obtenerPrendasDelUsuario(usuarioId);
     }
+
+    @DeleteMapping("/{usuarioId}/quitar/{prendaId}")
+    public void quitar(
+            @PathVariable Long usuarioId,
+            @PathVariable Long prendaId
+    ){
+        service.quitarPrenda(usuarioId, prendaId);
+    }
 }

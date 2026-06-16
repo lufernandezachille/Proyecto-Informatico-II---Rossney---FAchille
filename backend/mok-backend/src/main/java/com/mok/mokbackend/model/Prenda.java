@@ -11,10 +11,17 @@ public class Prenda {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
+
     private String nombre;
+
     private String imagen;
+
     @Enumerated(EnumType.STRING)
     private TipoPrenda tipo;
+
+    @Enumerated(EnumType.STRING)
+    private CategoriaPrenda categoria;
+
     @ManyToMany
     @JoinTable(
             name="prenda_etiqueta",
@@ -24,14 +31,13 @@ public class Prenda {
     private List<Etiqueta> etiquetas;
 
     public Prenda(){
-
     }
 
-    public Prenda(String nombre, TipoPrenda tipo){
-        this.nombre=nombre;
-        this.tipo=tipo;
+    public Prenda(String nombre, TipoPrenda tipo, CategoriaPrenda categoria){
+        this.nombre = nombre;
+        this.tipo = tipo;
+        this.categoria = categoria;
     }
-
 
     public Long getId(){
         return id;
@@ -62,5 +68,11 @@ public class Prenda {
     }
     public void setEtiquetas(List<Etiqueta> etiquetas){
         this.etiquetas = etiquetas;
+    }
+    public CategoriaPrenda getCategoria(){
+        return categoria;
+    }
+    public void setCategoria(CategoriaPrenda categoria){
+        this.categoria = categoria;
     }
 }

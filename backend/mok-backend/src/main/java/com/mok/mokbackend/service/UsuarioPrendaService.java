@@ -60,4 +60,19 @@ public class UsuarioPrendaService {
                 .map(UsuarioPrenda::getPrenda)
                 .collect(Collectors.toList());
     }
+
+    public void quitarPrenda(Long usuarioId, Long prendaId){
+
+        UsuarioPrenda relacion =
+                usuarioPrendaRepository
+                        .findByUsuarioId(usuarioId)
+                        .stream()
+                        .filter(up -> up.getPrenda().getId().equals(prendaId))
+                        .findFirst()
+                        .orElseThrow(() ->
+                                new RuntimeException("No existe esa prenda en el armario")
+                        );
+
+        usuarioPrendaRepository.delete(relacion);
+    }
 }

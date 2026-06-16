@@ -1,69 +1,98 @@
 package com.mok.mokbackend.service;
 
-import com.mok.mokbackend.model.Outfit;
-import com.mok.mokbackend.model.Usuario;
-import com.mok.mokbackend.model.UsuarioPrenda;
-import com.mok.mokbackend.model.TipoOutfit;
-import com.mok.mokbackend.model.TipoPrenda;
-
-import com.mok.mokbackend.repository.OutfitRepository;
-import com.mok.mokbackend.repository.UsuarioPrendaRepository;
-import com.mok.mokbackend.repository.UsuarioRepository;
-
+import com.mok.mokbackend.model.*;
+import com.mok.mokbackend.repository.*;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class OutfitService {
 
     private final UsuarioPrendaRepository usuarioPrendaRepository;
-    private final UsuarioRepository usuarioRepository;
     private final OutfitRepository outfitRepository;
+    private final UsuarioRepository usuarioRepository;
 
     public OutfitService(
             UsuarioPrendaRepository usuarioPrendaRepository,
-            UsuarioRepository usuarioRepository,
-            OutfitRepository outfitRepository
-    ) {
+            OutfitRepository outfitRepository,
+            UsuarioRepository usuarioRepository
+    ){
         this.usuarioPrendaRepository = usuarioPrendaRepository;
-        this.usuarioRepository = usuarioRepository;
         this.outfitRepository = outfitRepository;
+        this.usuarioRepository = usuarioRepository;
     }
 
-    public Outfit generarOutfitBasico(Long usuarioId){
+    public Outfit generarOutfitRandom(Long usuarioId, TipoOutfit tipo){
 
         Usuario usuario = usuarioRepository.findById(usuarioId)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
 
-        List<UsuarioPrenda> armario = usuarioPrendaRepository.findByUsuarioId(usuarioId);
+        List<UsuarioPrenda> armario =
+                usuarioPrendaRepository.findByUsuarioId(usuarioId);
 
-        List<UsuarioPrenda> arriba = armario.stream()
-                .filter(p -> p.getPrenda().getTipo() == TipoPrenda.ARRIBA)
-                .toList();
+        List<UsuarioPrenda> seleccion = new ArrayList<>();
+        Random random = new Random();
 
-        List<UsuarioPrenda> abajo = armario.stream()
-                .filter(p -> p.getPrenda().getTipo() == TipoPrenda.ABAJO)
-                .toList();
+        Outfit outfit = new Outfit();
+        outfit.setUsuario(usuario);
+        outfit.setTipo(tipo);
 
-        List<UsuarioPrenda> calzado = armario.stream()
-                .filter(p -> p.getPrenda().getTipo() == TipoPrenda.CALZADO)
-                .toList();
+        if(tipo == TipoOutfit.PARTES){
+            seleccion.add(
+                    randomPorTipo(armario, TipoPrenda.ARRIBA)
+            );
+            seleccion.add(
+                    randomPorTipo(armario, TipoPrenda.ABAJO)
+            );
+            seleccion.add(
+                    randomPorTipo(armario, TipoPrenda.CALZADO)
+            );
+            seleccion.add(
+                    randomPorTipo(armario, TipoPrenda.ACCESORIO)
+            );
+        } else {
+            seleccion.add(
+                    randomPorTipo(armario, TipoPrenda.VESTIDO)
+            );
+            seleccion.add(
+                    randomPorTipo(armario, TipoPrenda.CALZADO)
+            );
+            seleccion.add(
+                    randomPorTipo(armario, TipoPrenda.ACCESORIO)
+            );
+        }
+        outfit.setPrendas(seleccion);
+        return outfitRepository.save(outfit);
+    }
 
-        if(arriba.isEmpty() || abajo.isEmpty() || calzado.isEmpty()){
-            throw new RuntimeException("No tenés suficientes prendas para generar outfit");
+    private UsuarioPrenda randomPorTipo(
+            List<UsuarioPrenda> armario,
+            TipoPrenda tipo
+    ){
+        List<UsuarioPrenda> filtradas =
+                armario.stream()
+                        .filter(up -> up.getPrenda().getTipo() == tipo)
+                        .toList();
+
+        if(filtradas.isEmpty()){
+            throw new RuntimeException("No hay prendas de tipo: " + tipo);
         }
 
-        UsuarioPrenda p1 = arriba.get(0);
-        UsuarioPrenda p2 = abajo.get(0);
-        UsuarioPrenda p3 = calzado.get(0);
+        Random random = new Random();
 
-        Outfit outfit = new Outfit(
-                usuario,
-                TipoOutfit.PARTES,
-                List.of(p1, p2, p3)
+        return filtradas.get(
+                random.nextInt(filtradas.size())
         );
+    }
 
+    public Outfit guardarOutfit(Outfit outfit){
         return outfitRepository.save(outfit);
+    }
+
+    public List<Outfit> obtenerOutfitsPorUsuario(Long usuarioId){
+        return outfitRepository.findByUsuarioId(usuarioId);
     }
 }
