@@ -14,21 +14,17 @@
         <h1>MOK</h1>
     </header>
     
-     <main>
+     <main class="pagina-cuenta">
         <h2 class="titulo-cuenta">Mi Cuenta</h2>
-
-        <div class="contenedor-cuenta" id="sinSesion">
+        <div class="contenedor-cuenta card-cuenta" id="sinSesion">
 
             <div class="icono-cuenta">
                 <img src="../img/cuenta.png" alt="Cuenta">
             </div>
 
-            <h2 class="titulo-cuenta">Mi Cuenta</h2>
-
             <p class="descripcion-cuenta">
-                Guardá tus outfits favoritos,
-                organizá tu armario y creá
-                combinaciones únicas.
+                Guardá tus outfits favoritos,<br>
+                organizá tu armario y creá combinaciones únicas.
             </p>
 
             <a href="iniciarsesion.html" class="boton-principal">
@@ -39,16 +35,15 @@
                 <span>o</span>
             </div>
 
-            <p class="texto-crear">
-                ¿Sos nuevo en MOK?
-            </p>
+            <p class="texto-crear">¿Sos nuevo en MOK?</p>
 
             <a href="crearcuenta.html" class="link-crear">
                 Crear Cuenta
             </a>
         </div>
 
-        <div class="contenedor-cuenta" id="conSesion" style="display:none">
+        <div class="contenedor-cuenta card-cuenta" id="conSesion" style="display:none">
+
             <div class="icono-cuenta">
                 <img src="../img/cuenta.png" alt="Cuenta">
             </div>
@@ -57,17 +52,14 @@
                 Hola <span id="nombreUsuario"></span> 💛
             </h2>
 
-            <p class="descripcion-cuenta">
-                Email:
-                <span id="emailUsuario"></span>
-            </p>
+            <div class="info-cuenta">
+                <p>Email: <span id="emailUsuario"></span></p>
+                <p>Plan: <span id="planUsuario"></span></p>
+            </div>
 
-            <p class="descripcion-cuenta">
-                Plan:
-                <span id="planUsuario"></span>
-            </p>
-
-            <button id="cerrarSesion" class="boton-principal">Cerrar sesión</button>
+            <button id="cerrarSesion" class="boton-principal">
+                Cerrar sesión
+            </button>
         </div>
     </main>
     

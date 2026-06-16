@@ -7,6 +7,5 @@ import java.util.List;
 
 public interface OutfitRepository
         extends JpaRepository<Outfit,Long> {
-
     List<Outfit> findByUsuarioId(Long usuarioId);
 }

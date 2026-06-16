@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/outfits")
-@CrossOrigin(origins="*")
+@CrossOrigin("*")
 public class OutfitController {
 
     private final OutfitService outfitService;
@@ -19,20 +19,18 @@ public class OutfitController {
     }
 
     @GetMapping("/random/{usuarioId}/{tipo}")
-    public Outfit generarRandom(
-            @PathVariable Long usuarioId,
-            @PathVariable TipoOutfit tipo
-    ){
+    public Outfit generar(@PathVariable Long usuarioId,
+                          @PathVariable TipoOutfit tipo){
         return outfitService.generarOutfitRandom(usuarioId, tipo);
-    }
-
-    @PostMapping("/guardar")
-    public Outfit guardar(@RequestBody Outfit outfit){
-        return outfitService.guardarOutfit(outfit);
     }
 
     @GetMapping("/usuario/{usuarioId}")
     public List<Outfit> porUsuario(@PathVariable Long usuarioId){
         return outfitService.obtenerOutfitsPorUsuario(usuarioId);
+    }
+
+    @DeleteMapping("/{id}")
+    public void eliminar(@PathVariable Long id){
+        outfitService.eliminarOutfit(id);
     }
 }

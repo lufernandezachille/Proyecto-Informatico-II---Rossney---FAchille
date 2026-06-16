@@ -256,20 +256,56 @@ nav {
     margin: 0 10px;
 }
 
-.item-outfit {
+.outfit-card{
     background-color: var(--marron-claro);
     border-radius: 15px;
     padding: 10px;
     width: 180px;
     height: 400px;
+    position:relative;
 }
 
-.img-outfit-explorar {
-    width: 150px;
-    height: 360px;
-    margin-left: 15px;
-    object-fit: cover;
-    border-radius: 10px;
+.outfit-prendas{
+    height:380px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:40px;
+    overflow:hidden;
+}
+
+.prenda-outfit{
+    max-width:90px;
+    max-height:90px;
+    object-fit:contain;
+    margin:-15px;
+}
+
+.boton-eliminar-outfit{
+    position:absolute;
+    bottom:10px;
+    right:10px;
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    border:none;
+    background: var(--cremita);
+    color:var(--marron-oscuro);
+    font-size:20px;
+}
+
+.boton-eliminar-outfit:hover{
+    background-color: var(--marron-oscuro);
+    color: var(--cremita);
+    cursor: pointer;
+}
+
+.titulo-prenda-outfit {
+    text-align: left;
+    font-size: 0.9em;
+    margin: 0 0;
+    display: inline-block;
 }
 
 /* crear outfit */
@@ -356,23 +392,48 @@ nav {
 }
 
 .favorito {
-    position: absolute;
-    bottom: 5px;
-    right: 5px;
-    width: 28px;
-    height: 28px;
+    background-color: var(--marron-claro);
+    color: var(--cremita);
+    font-family: "DM Serif Display", serif;
     border: none;
-    border-radius: 50px;
-    background-color: var(--cremita);
-    color: var(--marron-oscuro);
+    padding: 10px 35px;
+    border-radius: 15px;
+    font-size: 1.5em;
+    display: block;
+    margin: 20px auto;
+}
+
+.favorito:hover {
+    background-color: var(--marron-claro-hover);
     cursor: pointer;
-    font-size: 18px;
+    transform: scale(1.05);
+}
+
+.outfit-preview{
+    height:400px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:15px;
+}
+
+.prenda{
+    width:120px;
+    height:100px;
+    object-fit:contain;
+}
+
+.vestido{
+    height:140px;
 }
 
 /* cuenta */
-.titulo-cuenta {
-    text-align: center;
-    margin: 0;
+.pagina-cuenta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 15px;
 }
 
 .contenedor-cuenta {
@@ -380,33 +441,42 @@ nav {
     flex-direction: column;
     align-items: center;
     width: 85%;
-    max-width: 350px;
+    max-width: 340px;
     margin: 40px auto;
+    text-align: center;
 }
 
 .icono-cuenta {
-    width: 90px;
-    height: 90px;
+    width: 85px;
+    height: 85px;
     background-color: var(--marron-claro);
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .icono-cuenta img {
-    width: 45px;
+    width: 42px;
 }
 
 .titulo-cuenta {
-    margin-bottom: 10px;
+    text-align: center;
+    margin: 10px 0 20px 0;
+}
+
+#conSesion .descripcion-cuenta,
+#conSesion .info-cuenta {
+    margin-bottom: 18px;
 }
 
 .descripcion-cuenta {
     text-align: center;
     line-height: 1.5;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .boton-principal {
@@ -416,53 +486,59 @@ nav {
     padding: 15px 40px;
     border-radius: 12px;
     font-family: "DM Serif Display", serif;
-    font-size: 1.1em;
-    transition: 0.2s;
+    font-size: 1.05em;
+    transition: 0.15s;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
 }
 
 .boton-principal:hover {
-    transform: scale(1.05);
+    transform: scale(1.02);
 }
 
 .separador {
     width: 100%;
     text-align: center;
-    margin: 25px 0;
+    margin: 20px 0;
     position: relative;
 }
 
-.separador::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 50%;
-    width: 42%;
-    height: 1px;
-    background-color: var(--marron-claro);
-}
-
+.separador::before,
 .separador::after {
     content: "";
     position: absolute;
-    right: 0;
     top: 50%;
-    width: 42%;
+    width: 40%;
     height: 1px;
     background-color: var(--marron-claro);
 }
 
-.separador span {
-    padding: 0 10px;
-}
+.separador::before { left: 0; }
+.separador::after { right: 0; }
 
-.texto-crear {
-    margin-bottom: 10px;
+.separador span {
+    padding: 0 8px;
 }
 
 .link-crear {
     color: var(--marron-oscuro);
     font-weight: bold;
     text-decoration: none;
+}
+
+.link-crear:hover {
+    text-decoration: underline;
+}
+
+.info-cuenta {
+    text-align: center;
+    line-height: 1.6;
+}
+
+.info-cuenta p {
+    margin: 6px 0;
 }
 
 /* inicio */
