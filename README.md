@@ -20,7 +20,7 @@ Abrir una terminal y ejecutar los siguientes comandos:
  
 ```bash
 git clone https://github.com/tuusuario/mok.git
-cd mok
+cd Proyecto-Informatico-II---Rossney---FAchille
 ```
  
 ---
